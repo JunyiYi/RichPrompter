@@ -13,5 +13,7 @@ namespace Microsoft.RichPrompter.GUI
     /// </summary>
     public partial class App : Application
     {
+        public static CuesCardDocument Document => document.Value;
+        private static readonly Lazy<CuesCardDocument> document = new Lazy<CuesCardDocument>(true);
     }
 }

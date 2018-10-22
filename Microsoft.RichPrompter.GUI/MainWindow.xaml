@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Microsoft.RichPrompter.GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Height="450" Width="1100"
+        DataContext="{x:Static local:App.Document}" Title="{Binding Title}"
+        MouseEnter="Window_MouseEnter" MouseLeave="Window_MouseLeave">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         
+        <Button Grid.Row="0" Grid.Column="0" Width="48" Height="48" Command="{Binding LoadCuesCardCommand}" Click="Button_Click">Load</Button>
+        <Button Grid.Row="0" Grid.Column="3" Width="48" Height="48" Click="Prev_Click">&lt;</Button>
+        <Button Grid.Row="0" Grid.Column="4" Width="48" Height="48" Click="Next_Click">&gt;</Button>
+        <ListBox Grid.Row="1" Grid.Column="1" Width="200" Name="Cues" SelectionChanged="Cues_SelectionChanged" />
+        <FlowDocumentScrollViewer Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" VerticalScrollBarVisibility="Hidden" Name="ActiveCue">
+        </FlowDocumentScrollViewer>
     </Grid>
 </Window>
